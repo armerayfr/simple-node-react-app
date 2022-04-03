@@ -5,9 +5,9 @@ const sequelize = require("../config/database");
 const { Api404Error } = require("../utils/Error");
 
 class User extends Model {
-  static async findByCreditials(email, password) {
+  static async findByCreditials(username, password) {
     const user = await User.findOne({
-      where: { email, password },
+      where: { username, password },
     });
 
     if (!user) {
@@ -18,9 +18,7 @@ class User extends Model {
   }
 
   generateToken(payload) {
-    return jwt.sign(payload, "private123", {
-      expiresIn: "12h",
-    });
+    return jwt.sign(payload, "private123");
   }
 }
 
@@ -34,13 +32,13 @@ User.init(
       type: DataTypes.STRING,
       unique: true,
     },
-    pasword: {
+    password: {
       type: DataTypes.TEXT,
     },
   },
   {
     sequelize,
-    freezeTableName: SVGComponentTransferFunctionElement,
+    freezeTableName: true,
     tableName: "user",
     timestamps: false,
   }

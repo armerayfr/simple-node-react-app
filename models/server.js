@@ -36,13 +36,8 @@ class Server {
 
   //bind controllers to routes
   routes() {
-    this.app.use(this.paths.home, (req, res) => {
-      logger.info({
-        name: "armer",
-      });
-      logger.info("Hello");
-      res.status(200).send("welcome");
-    });
+    this.app.use(this.paths.home, require("../routes/user"));
+    this.app.use(this.paths.home, require("../routes/job"));
 
     //handling error
 
