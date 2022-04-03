@@ -18,9 +18,7 @@ class User extends Model {
   }
 
   generateToken(payload) {
-    return jwt.sign(payload, "private123", {
-      expiresIn: "12h",
-    });
+    return jwt.sign(payload, "private123");
   }
 }
 
