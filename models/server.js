@@ -37,6 +37,7 @@ class Server {
   //bind controllers to routes
   routes() {
     this.app.use(this.paths.home, require("../routes/user"));
+    this.app.use(this.paths.home, require("../routes/job"));
 
     //handling error
 
