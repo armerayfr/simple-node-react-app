@@ -5,9 +5,10 @@ const axios = require("axios");
 
 const jobs = async (req, res, next) => {
   let url = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json?";
-  const { description, location, full_time } = req.query;
+  const { description, location, full_time, page } = req.query;
 
   try {
+    if (page !== undefined) url += `page=${page}`;
     if (description !== undefined) url += `description=${description}&`;
     if (location !== undefined) url += `location=${location}&`;
     if (full_time !== undefined) url += `full_time=${full_time}`;
